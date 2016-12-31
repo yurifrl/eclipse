@@ -2,13 +2,12 @@
 
 # mkdir -p .eclipse-docker
 
-docker stop eclipse
-docker rm eclipse
+# docker stop eclipse
+# docker rm eclipse
 
-docker run -d \
+  # -v $(pwd)/.eclipse-docker:/home/developer \
+docker run --rm -it \
   -e DISPLAY=$DISPLAY \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
-  -v $(pwd)/.eclipse-docker:/home/developer \
   -v $(pwd):/home/developer/app \
-  --name eclipse \
   yurifl/eclipse

@@ -1,3 +1,3 @@
 all:
-	docker-compose build
-	docker push yurifl/eclipse:latest
+		docker-compose build --force-rm
+	# docker push yurifl/eclipse:latest

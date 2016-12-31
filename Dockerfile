@@ -11,7 +11,8 @@ RUN mkdir -p /home/developer && \
     chown developer:developer -R /home/developer && \
     chown root:root /usr/bin/sudo && chmod 4755 /usr/bin/sudo
 
-ENV ECLIPSE_URL http://eclipse.c3sl.ufpr.br/oomph/epp/neon/R2a/eclipse-inst-linux64.tar.gz
+# ENV ECLIPSE_URL http://eclipse.c3sl.ufpr.br/technology/epp/downloads/release/oxygen/M4/eclipse-java-oxygen-M4-linux-gtk-x86_64.tar.gz
+ENV ECLIPSE_URL http://eclipse.c3sl.ufpr.br/technology/epp/downloads/release/neon/2/eclipse-java-neon-2-linux-gtk-x86_64.tar.gz
 RUN wget $ECLIPSE_URL -O /tmp/eclipse.tar.gz -q && \
     echo 'Installing eclipse' && \
     tar -xf /tmp/eclipse.tar.gz -C /opt && \
@@ -19,7 +20,11 @@ RUN wget $ECLIPSE_URL -O /tmp/eclipse.tar.gz -q && \
 
 ADD run /usr/local/bin/eclipse
 RUN chmod +x /usr/local/bin/eclipse
+
+RUN mkdir -p /home/developer/.eclipse
 RUN chown developer:developer /usr/local/bin/eclipse
+RUN chown developer:developer -R /home/developer
+RUN chmod 775 -R /home/developer
 
 USER developer
 ENV HOME /home/developer
