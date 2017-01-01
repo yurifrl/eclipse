@@ -21,11 +21,6 @@ RUN wget $ECLIPSE_URL -O /tmp/eclipse.tar.gz -q && \
 ADD run /usr/local/bin/eclipse
 RUN chmod +x /usr/local/bin/eclipse
 
-RUN mkdir -p /home/developer/.eclipse
-RUN chown developer:developer /usr/local/bin/eclipse
-RUN chown developer:developer -R /home/developer
-RUN chmod 775 -R /home/developer
-
 USER developer
 ENV HOME /home/developer
 WORKDIR /home/developer

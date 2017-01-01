@@ -1,12 +1,13 @@
 #!/bin/bash
 
+# To keep plugins around
 # mkdir -p .eclipse-docker
+# -v $(pwd)/.eclipse:/home/developer \
 
-# docker stop eclipse
-# docker rm eclipse
+docker stop eclipse
+docker rm eclipse
 
-  # -v $(pwd)/.eclipse-docker:/home/developer \
-docker run --rm -it \
+docker run -d \
   -e DISPLAY=$DISPLAY \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v $(pwd):/home/developer/app \
