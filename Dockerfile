@@ -24,4 +24,5 @@ RUN chmod +x /usr/local/bin/eclipse
 USER developer
 ENV HOME /home/developer
 WORKDIR /home/developer
+RUN mkdir -p /home/developer/workspace
 CMD /usr/local/bin/eclipse
