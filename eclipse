@@ -2,7 +2,6 @@
 
 # To keep plugins around
 # mkdir -p .eclipse-docker
-# -v $(pwd)/.eclipse:/home/developer \
 
 docker stop eclipse
 docker rm eclipse
@@ -10,5 +9,11 @@ docker rm eclipse
 docker run -d \
   -e DISPLAY=$DISPLAY \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
-  -v $(pwd):/home/developer/app \
+  -v $(pwd):/home/developer/workspace/app \
+  -v $HOME/dot-files/eclipse/eclipse:/home/developer/.eclipse \
+  -v $HOME/dot-files/eclipse/swt:/home/developer/.swt \
+  -v $HOME/dot-files/eclipse/tooling:/home/developer/.tooling \
+  -v $HOME/dot-files/eclipse/config:/home/developer/.config \
+  -v $HOME/dot-files/eclipse/metadata:/home/developer/workspace/.metadata \
+  --name eclipse \
   yurifl/eclipse
